@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             mnuMain = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             tsmCreate = new ToolStripMenuItem();
@@ -42,6 +43,17 @@
             tsmExit = new ToolStripMenuItem();
             правкаToolStripMenuItem = new ToolStripMenuItem();
             UndoToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            CutToolStripMenuItem = new ToolStripMenuItem();
+            CopyToolStripMenuItem = new ToolStripMenuItem();
+            PasteToolStripMenuItem = new ToolStripMenuItem();
+            DeleteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator4 = new ToolStripSeparator();
+            Find_on_InternetToolStripMenuItem = new ToolStripMenuItem();
+            FindToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator5 = new ToolStripSeparator();
+            SellectAllToolStripMenuItem = new ToolStripMenuItem();
+            DateandTimeToolStripMenuItem = new ToolStripMenuItem();
             форматToolStripMenuItem = new ToolStripMenuItem();
             видToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
@@ -50,6 +62,7 @@
             sfdMain = new SaveFileDialog();
             ofdMain = new OpenFileDialog();
             prdMain = new PrintDialog();
+            FontToolStripMenuItem = new ToolStripMenuItem();
             mnuMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,7 +157,7 @@
             // 
             // правкаToolStripMenuItem
             // 
-            правкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { UndoToolStripMenuItem });
+            правкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { UndoToolStripMenuItem, toolStripSeparator3, CutToolStripMenuItem, CopyToolStripMenuItem, PasteToolStripMenuItem, DeleteToolStripMenuItem, toolStripSeparator4, Find_on_InternetToolStripMenuItem, FindToolStripMenuItem, toolStripSeparator5, SellectAllToolStripMenuItem, DateandTimeToolStripMenuItem });
             правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
             правкаToolStripMenuItem.Size = new Size(59, 20);
             правкаToolStripMenuItem.Text = "Правка";
@@ -154,12 +167,91 @@
             UndoToolStripMenuItem.Enabled = false;
             UndoToolStripMenuItem.Name = "UndoToolStripMenuItem";
             UndoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            UndoToolStripMenuItem.Size = new Size(180, 22);
+            UndoToolStripMenuItem.Size = new Size(226, 22);
             UndoToolStripMenuItem.Text = "Отменить";
             UndoToolStripMenuItem.Click += UndoToolStripMenuItem_Click;
             // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(223, 6);
+            // 
+            // CutToolStripMenuItem
+            // 
+            CutToolStripMenuItem.Name = "CutToolStripMenuItem";
+            CutToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
+            CutToolStripMenuItem.Size = new Size(226, 22);
+            CutToolStripMenuItem.Text = "Вырезать";
+            CutToolStripMenuItem.Click += CutToolStripMenuItem_Click;
+            // 
+            // CopyToolStripMenuItem
+            // 
+            CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            CopyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
+            CopyToolStripMenuItem.Size = new Size(226, 22);
+            CopyToolStripMenuItem.Text = "Копировать";
+            CopyToolStripMenuItem.Click += CopyToolStripMenuItem_Click;
+            // 
+            // PasteToolStripMenuItem
+            // 
+            PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
+            PasteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
+            PasteToolStripMenuItem.Size = new Size(226, 22);
+            PasteToolStripMenuItem.Text = "Вставить";
+            PasteToolStripMenuItem.Click += PasteToolStripMenuItem_Click;
+            // 
+            // DeleteToolStripMenuItem
+            // 
+            DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            DeleteToolStripMenuItem.ShortcutKeys = Keys.Delete;
+            DeleteToolStripMenuItem.Size = new Size(226, 22);
+            DeleteToolStripMenuItem.Text = "Удалить";
+            DeleteToolStripMenuItem.Click += DeleteToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(223, 6);
+            // 
+            // Find_on_InternetToolStripMenuItem
+            // 
+            Find_on_InternetToolStripMenuItem.Name = "Find_on_InternetToolStripMenuItem";
+            Find_on_InternetToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.E;
+            Find_on_InternetToolStripMenuItem.Size = new Size(226, 22);
+            Find_on_InternetToolStripMenuItem.Text = "Поиск в интернете...";
+            Find_on_InternetToolStripMenuItem.Click += Find_on_InternetToolStripMenuItem_Click;
+            // 
+            // FindToolStripMenuItem
+            // 
+            FindToolStripMenuItem.Name = "FindToolStripMenuItem";
+            FindToolStripMenuItem.Size = new Size(226, 22);
+            FindToolStripMenuItem.Text = "Найти...";
+            FindToolStripMenuItem.Click += FindToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(223, 6);
+            // 
+            // SellectAllToolStripMenuItem
+            // 
+            SellectAllToolStripMenuItem.Name = "SellectAllToolStripMenuItem";
+            SellectAllToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.A;
+            SellectAllToolStripMenuItem.Size = new Size(226, 22);
+            SellectAllToolStripMenuItem.Text = "Выделить всё";
+            SellectAllToolStripMenuItem.Click += SellectAllToolStripMenuItem_Click;
+            // 
+            // DateandTimeToolStripMenuItem
+            // 
+            DateandTimeToolStripMenuItem.Name = "DateandTimeToolStripMenuItem";
+            DateandTimeToolStripMenuItem.ShortcutKeys = Keys.F5;
+            DateandTimeToolStripMenuItem.Size = new Size(226, 22);
+            DateandTimeToolStripMenuItem.Text = "Дата и время";
+            DateandTimeToolStripMenuItem.Click += DateandTimeToolStripMenuItem_Click;
+            // 
             // форматToolStripMenuItem
             // 
+            форматToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { FontToolStripMenuItem });
             форматToolStripMenuItem.Name = "форматToolStripMenuItem";
             форматToolStripMenuItem.Size = new Size(62, 20);
             форматToolStripMenuItem.Text = "Формат";
@@ -209,6 +301,13 @@
             // 
             prdMain.UseEXDialog = true;
             // 
+            // FontToolStripMenuItem
+            // 
+            FontToolStripMenuItem.Name = "FontToolStripMenuItem";
+            FontToolStripMenuItem.Size = new Size(180, 22);
+            FontToolStripMenuItem.Text = "Шрифт...";
+            FontToolStripMenuItem.Click += FontToolStripMenuItem_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -217,6 +316,7 @@
             Controls.Add(stsMain);
             Controls.Add(txtMain);
             Controls.Add(mnuMain);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnuMain;
             Name = "frmMain";
             Text = "Блокнот";
@@ -250,5 +350,17 @@
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem PagerSettingsToolStripMenuItem;
         private ToolStripMenuItem UndoToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem CutToolStripMenuItem;
+        private ToolStripMenuItem CopyToolStripMenuItem;
+        private ToolStripMenuItem PasteToolStripMenuItem;
+        private ToolStripMenuItem DeleteToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem Find_on_InternetToolStripMenuItem;
+        private ToolStripMenuItem FindToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem SellectAllToolStripMenuItem;
+        private ToolStripMenuItem DateandTimeToolStripMenuItem;
+        private ToolStripMenuItem FontToolStripMenuItem;
     }
 }

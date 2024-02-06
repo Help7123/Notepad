@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
@@ -10,12 +12,10 @@ namespace Notepad
         {
             InitializeComponent();
         }
-
         /// <summary>
         /// Сохраненные параметры страницы
         /// </summary>
         private PageSettings? savedPageSettings;
-
 
         /// <summary>
         /// Открыть файл
@@ -196,6 +196,101 @@ namespace Notepad
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
             UndoToolStripMenuItem.Enabled = true;
+        }
+
+
+        /// <summary>
+        /// Вырезать
+        /// При нажатие на кнопку, функция вырезает выделенный текст
+        /// </summary>
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Cut();
+        }
+
+
+        /// <summary>
+        /// Копировать
+        /// При нажатие на кнопку, функция копирует выделенный текст
+        /// </summary>
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtMain.SelectedText);
+        }
+
+
+        /// <summary>
+        /// Вставить
+        /// При нажатие на кнопку, функция вставляет текст и буфера обмена
+        /// </summary>
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Paste();
+        }
+
+
+        /// <summary>
+        /// Удалить
+        /// При нажатие на кнопку, функция удаляет выделенный текст
+        /// </summary>
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.SelectedText = "";
+        }
+
+
+        /// <summary>
+        /// Поиск в интернете
+        /// При нажатие на кнопку, функция открывает браузер с поиском выделенного текста
+        /// </summary>
+        private void Find_on_InternetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtMain.SelectionLength > 0)
+                Process.Start(new ProcessStartInfo($@"https://www.google.ru/search?source=hp&q={txtMain.SelectedText}&num=100") { UseShellExecute = true });
+        }
+
+
+        /// <summary>
+        /// Найти
+        /// В разработке...
+        /// </summary>
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBoxFinds richTextBoxFinds = new RichTextBoxFinds();
+        }
+
+
+        /// <summary>
+        /// Выбрать всё
+        /// При нажатие на кнопку, выделяет весь текст в TextBox
+        /// </summary>
+        private void SellectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.SelectAll();
+        }
+
+
+        /// <summary>
+        /// Дата и время
+        /// При нажатие на кнопку, вставляет дату и время в Textbox
+        /// </summary>
+        private void DateandTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Text += DateTime.Now;
+        }
+
+
+        /// <summary>
+        /// шрифт
+        /// При нажатие на кнопку, открывается меню шрифтов Textbox
+        /// </summary>
+        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog myFontDialog = new FontDialog();
+            if (myFontDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtMain.Font = myFontDialog.Font;
+            }
         }
     }
 }

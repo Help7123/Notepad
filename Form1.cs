@@ -1,8 +1,6 @@
 using System.Diagnostics;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
+using System.IO;
 
 namespace Notepad
 {
@@ -192,10 +190,12 @@ namespace Notepad
 
         /// <summary>
         /// При изменение txtMain включает кнопку Отменить
+        /// Строка состояния в разработке...
         /// </summary>
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
             UndoToolStripMenuItem.Enabled = true;
+            txt_infoStripStatusLabel1.Text = "строка и столбик, маштаб, кодировка";
         }
 
 
@@ -256,7 +256,7 @@ namespace Notepad
         /// </summary>
         private void FindToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RichTextBoxFinds richTextBoxFinds = new RichTextBoxFinds();
+            //RichTextBoxFinds richTextBoxFinds = new RichTextBoxFinds();
         }
 
 
@@ -290,6 +290,51 @@ namespace Notepad
             if (myFontDialog.ShowDialog() == DialogResult.OK)
             {
                 txtMain.Font = myFontDialog.Font;
+            }
+        }
+
+        private void WrapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtMain.WordWrap == true)
+            {
+                txtMain.WordWrap = false;
+                WrapToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                txtMain.WordWrap = true;
+                WrapToolStripMenuItem.Checked = true;
+            }
+
+        }
+
+        private void Scale_defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Font = new Font(txtMain.Font.FontFamily, 12);
+        }
+
+        private void reduce_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Font = new Font(txtMain.Font.FontFamily, txtMain.Font.Size - 1);
+        }
+
+        private void increase_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtMain.Font = new Font(txtMain.Font.FontFamily, txtMain.Font.Size + 1);
+
+        }
+
+        private void Status_BarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (stsMain.Visible == true)
+            {
+                Status_BarToolStripMenuItem.Checked = false;
+                stsMain.Visible = false;
+            }
+            else
+            {
+                Status_BarToolStripMenuItem.Checked = true;
+                stsMain.Visible = true;
             }
         }
     }

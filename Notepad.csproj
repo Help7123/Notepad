@@ -6,6 +6,19 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FastColoredTextBox.Net5" Version="2.16.26" />
+    <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="17.8.37221" />
+    <PackageReference Include="TabStrip" Version="1.0.0.109" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
 
 </Project>

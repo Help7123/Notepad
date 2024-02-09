@@ -55,15 +55,27 @@
             SellectAllToolStripMenuItem = new ToolStripMenuItem();
             DateandTimeToolStripMenuItem = new ToolStripMenuItem();
             форматToolStripMenuItem = new ToolStripMenuItem();
+            FontToolStripMenuItem = new ToolStripMenuItem();
+            WrapToolStripMenuItem = new ToolStripMenuItem();
             видToolStripMenuItem = new ToolStripMenuItem();
+            маштабToolStripMenuItem = new ToolStripMenuItem();
+            increase_the_ScaleToolStripMenuItem = new ToolStripMenuItem();
+            reduce_the_ScaleToolStripMenuItem = new ToolStripMenuItem();
+            Scale_defaultToolStripMenuItem = new ToolStripMenuItem();
+            Status_BarToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
+            ViewTheHelpToolStripMenuItem = new ToolStripMenuItem();
+            feedbackToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator6 = new ToolStripSeparator();
+            About_a_ProgramToolStripMenuItem = new ToolStripMenuItem();
             txtMain = new TextBox();
             stsMain = new StatusStrip();
+            txt_infoStripStatusLabel1 = new ToolStripStatusLabel();
             sfdMain = new SaveFileDialog();
             ofdMain = new OpenFileDialog();
             prdMain = new PrintDialog();
-            FontToolStripMenuItem = new ToolStripMenuItem();
             mnuMain.SuspendLayout();
+            stsMain.SuspendLayout();
             SuspendLayout();
             // 
             // mnuMain
@@ -251,43 +263,131 @@
             // 
             // форматToolStripMenuItem
             // 
-            форматToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { FontToolStripMenuItem });
+            форматToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { FontToolStripMenuItem, WrapToolStripMenuItem });
             форматToolStripMenuItem.Name = "форматToolStripMenuItem";
             форматToolStripMenuItem.Size = new Size(62, 20);
             форматToolStripMenuItem.Text = "Формат";
             // 
+            // FontToolStripMenuItem
+            // 
+            FontToolStripMenuItem.Name = "FontToolStripMenuItem";
+            FontToolStripMenuItem.Size = new Size(183, 22);
+            FontToolStripMenuItem.Text = "Шрифт...";
+            FontToolStripMenuItem.Click += FontToolStripMenuItem_Click;
+            // 
+            // WrapToolStripMenuItem
+            // 
+            WrapToolStripMenuItem.Name = "WrapToolStripMenuItem";
+            WrapToolStripMenuItem.Size = new Size(183, 22);
+            WrapToolStripMenuItem.Text = "Перенос по словам";
+            WrapToolStripMenuItem.Click += WrapToolStripMenuItem_Click;
+            // 
             // видToolStripMenuItem
             // 
+            видToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { маштабToolStripMenuItem, Status_BarToolStripMenuItem });
             видToolStripMenuItem.Name = "видToolStripMenuItem";
             видToolStripMenuItem.Size = new Size(39, 20);
             видToolStripMenuItem.Text = "Вид";
             // 
+            // маштабToolStripMenuItem
+            // 
+            маштабToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { increase_the_ScaleToolStripMenuItem, reduce_the_ScaleToolStripMenuItem, Scale_defaultToolStripMenuItem });
+            маштабToolStripMenuItem.Name = "маштабToolStripMenuItem";
+            маштабToolStripMenuItem.Size = new Size(180, 22);
+            маштабToolStripMenuItem.Text = "маштаб";
+            // 
+            // increase_the_ScaleToolStripMenuItem
+            // 
+            increase_the_ScaleToolStripMenuItem.Name = "increase_the_ScaleToolStripMenuItem";
+            increase_the_ScaleToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Oemplus;
+            increase_the_ScaleToolStripMenuItem.Size = new Size(322, 22);
+            increase_the_ScaleToolStripMenuItem.Text = "Увеличить";
+            increase_the_ScaleToolStripMenuItem.Click += increase_the_ScaleToolStripMenuItem_Click;
+            // 
+            // reduce_the_ScaleToolStripMenuItem
+            // 
+            reduce_the_ScaleToolStripMenuItem.Name = "reduce_the_ScaleToolStripMenuItem";
+            reduce_the_ScaleToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.OemMinus;
+            reduce_the_ScaleToolStripMenuItem.Size = new Size(322, 22);
+            reduce_the_ScaleToolStripMenuItem.Text = "Уменьшить";
+            reduce_the_ScaleToolStripMenuItem.Click += reduce_the_ScaleToolStripMenuItem_Click;
+            // 
+            // Scale_defaultToolStripMenuItem
+            // 
+            Scale_defaultToolStripMenuItem.Name = "Scale_defaultToolStripMenuItem";
+            Scale_defaultToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D0;
+            Scale_defaultToolStripMenuItem.Size = new Size(322, 22);
+            Scale_defaultToolStripMenuItem.Text = "Восстановить маштаб по умолчанию";
+            Scale_defaultToolStripMenuItem.Click += Scale_defaultToolStripMenuItem_Click;
+            // 
+            // Status_BarToolStripMenuItem
+            // 
+            Status_BarToolStripMenuItem.Checked = true;
+            Status_BarToolStripMenuItem.CheckState = CheckState.Checked;
+            Status_BarToolStripMenuItem.Name = "Status_BarToolStripMenuItem";
+            Status_BarToolStripMenuItem.Size = new Size(180, 22);
+            Status_BarToolStripMenuItem.Text = "Строка состояния";
+            Status_BarToolStripMenuItem.Click += Status_BarToolStripMenuItem_Click;
+            // 
             // справкаToolStripMenuItem
             // 
+            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ViewTheHelpToolStripMenuItem, feedbackToolStripMenuItem, toolStripSeparator6, About_a_ProgramToolStripMenuItem });
             справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             справкаToolStripMenuItem.Size = new Size(65, 20);
             справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // ViewTheHelpToolStripMenuItem
+            // 
+            ViewTheHelpToolStripMenuItem.Name = "ViewTheHelpToolStripMenuItem";
+            ViewTheHelpToolStripMenuItem.Size = new Size(195, 22);
+            ViewTheHelpToolStripMenuItem.Text = "Просмотреть справку";
+            // 
+            // feedbackToolStripMenuItem
+            // 
+            feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
+            feedbackToolStripMenuItem.Size = new Size(195, 22);
+            feedbackToolStripMenuItem.Text = "Оставить отзыв";
+            // 
+            // toolStripSeparator6
+            // 
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(192, 6);
+            // 
+            // About_a_ProgramToolStripMenuItem
+            // 
+            About_a_ProgramToolStripMenuItem.Name = "About_a_ProgramToolStripMenuItem";
+            About_a_ProgramToolStripMenuItem.Size = new Size(195, 22);
+            About_a_ProgramToolStripMenuItem.Text = "О программе";
             // 
             // txtMain
             // 
             txtMain.BorderStyle = BorderStyle.None;
             txtMain.Dock = DockStyle.Fill;
-            txtMain.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMain.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtMain.Location = new Point(0, 24);
             txtMain.Multiline = true;
             txtMain.Name = "txtMain";
             txtMain.ScrollBars = ScrollBars.Both;
-            txtMain.Size = new Size(807, 424);
+            txtMain.Size = new Size(807, 408);
             txtMain.TabIndex = 1;
+            txtMain.WordWrap = false;
             txtMain.TextChanged += txtMain_TextChanged;
             // 
             // stsMain
             // 
-            stsMain.Location = new Point(0, 426);
+            stsMain.Items.AddRange(new ToolStripItem[] { txt_infoStripStatusLabel1 });
+            stsMain.Location = new Point(0, 410);
             stsMain.Name = "stsMain";
             stsMain.Size = new Size(807, 22);
             stsMain.TabIndex = 2;
             stsMain.Text = "statusStrip1";
+            // 
+            // txt_infoStripStatusLabel1
+            // 
+            txt_infoStripStatusLabel1.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_infoStripStatusLabel1.Name = "txt_infoStripStatusLabel1";
+            txt_infoStripStatusLabel1.Size = new Size(213, 17);
+            txt_infoStripStatusLabel1.Text = "строка и столбик, маштаб, кодировка";
             // 
             // sfdMain
             // 
@@ -301,18 +401,11 @@
             // 
             prdMain.UseEXDialog = true;
             // 
-            // FontToolStripMenuItem
-            // 
-            FontToolStripMenuItem.Name = "FontToolStripMenuItem";
-            FontToolStripMenuItem.Size = new Size(180, 22);
-            FontToolStripMenuItem.Text = "Шрифт...";
-            FontToolStripMenuItem.Click += FontToolStripMenuItem_Click;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 448);
+            ClientSize = new Size(807, 432);
             Controls.Add(stsMain);
             Controls.Add(txtMain);
             Controls.Add(mnuMain);
@@ -322,6 +415,8 @@
             Text = "Блокнот";
             mnuMain.ResumeLayout(false);
             mnuMain.PerformLayout();
+            stsMain.ResumeLayout(false);
+            stsMain.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -362,5 +457,16 @@
         private ToolStripMenuItem SellectAllToolStripMenuItem;
         private ToolStripMenuItem DateandTimeToolStripMenuItem;
         private ToolStripMenuItem FontToolStripMenuItem;
+        private ToolStripMenuItem WrapToolStripMenuItem;
+        private ToolStripMenuItem ViewTheHelpToolStripMenuItem;
+        private ToolStripMenuItem feedbackToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripMenuItem About_a_ProgramToolStripMenuItem;
+        private ToolStripMenuItem маштабToolStripMenuItem;
+        private ToolStripMenuItem increase_the_ScaleToolStripMenuItem;
+        private ToolStripMenuItem reduce_the_ScaleToolStripMenuItem;
+        private ToolStripMenuItem Scale_defaultToolStripMenuItem;
+        private ToolStripMenuItem Status_BarToolStripMenuItem;
+        private ToolStripStatusLabel txt_infoStripStatusLabel1;
     }
 }

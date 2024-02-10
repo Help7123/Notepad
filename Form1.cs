@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using System.Drawing.Printing;
 using System.IO;
+using FastColoredTextBoxNS;
+using TabStrip;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Notepad
 {
@@ -9,7 +12,9 @@ namespace Notepad
         public frmMain()
         {
             InitializeComponent();
+            txt_infoStripStatusLabel1.Text = @$"    Маштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}";
         }
+
         /// <summary>
         /// Сохраненные параметры страницы
         /// </summary>
@@ -18,6 +23,7 @@ namespace Notepad
         /// <summary>
         /// Открыть файл
         /// Функция вызывает окно, в котором выбирается текстовый файл для открытия в блокноте
+        /// и автоматически определяет синтаксис файла по его расширению
         /// </summary>
         private void tsmOpen_Click(object sender, EventArgs e)
         {
@@ -27,25 +33,21 @@ namespace Notepad
                 try
                 {
                     StreamReader fr = new(ofdMain.FileName);
-                    Console.WriteLine("Содержание файла:");
                     str = fr.ReadLine();
                     txtMain.Text = str + "\r\n";
                     while (str != null)
                     {
-                        Console.WriteLine(str);
                         str = fr.ReadLine();
                         txtMain.Text = txtMain.Text + str + "\r\n"; ;
                     }
+                    string ext =Path.GetExtension(ofdMain.FileName);
+                    SetAutoSintax(ext);
                     fr.Close();
                 }
                 catch (Exception b)
                 {
-                    Console.WriteLine("Произошла ошибка!");
                     Console.WriteLine(b.Message);
                 }
-
-
-
             }
         }
 
@@ -96,7 +98,7 @@ namespace Notepad
         /// </summary>
         private void tsmExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
 
@@ -118,8 +120,6 @@ namespace Notepad
                 prdMain.Document.Print();
             }
         }
-
-
         /// <summary>
         /// Обработчик события печали, который выставляет странице шрифт, размер и цвет текста
         /// </summary>
@@ -153,7 +153,7 @@ namespace Notepad
 
 
         /// <summary>
-        /// Сохранить
+        /// Новое окно
         /// При нажатие на кнопку вызывается новое окно блокнота
         /// </summary>
         private void tsmNewWindow_Click(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace Notepad
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
             UndoToolStripMenuItem.Enabled = true;
-            txt_infoStripStatusLabel1.Text = "строка и столбик, маштаб, кодировка";
+            txt_infoStripStatusLabel1.Text = @$"    Маштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}";
         }
 
 
@@ -310,17 +310,17 @@ namespace Notepad
 
         private void Scale_defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtMain.Font = new Font(txtMain.Font.FontFamily, 12);
+            txtMain.Zoom = 100;
         }
 
         private void reduce_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtMain.Font = new Font(txtMain.Font.FontFamily, txtMain.Font.Size - 1);
+            txtMain.Zoom -= 10;
         }
 
         private void increase_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtMain.Font = new Font(txtMain.Font.FontFamily, txtMain.Font.Size + 1);
+            txtMain.Zoom += 10;
 
         }
 
@@ -336,6 +336,104 @@ namespace Notepad
                 Status_BarToolStripMenuItem.Checked = true;
                 stsMain.Visible = true;
             }
+        }
+
+        private void Defaul_textToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.Custom;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+        }
+
+        private void C_SharpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.CSharp;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+        }
+
+        private void hTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.HTML;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+        }
+
+        private void pHPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.PHP;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+        }
+
+        private void vBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.VB;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+        }
+
+        private void sQLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = txtMain.Text;
+            txtMain.Language = Language.SQL;
+            txtMain.Text = text;
+            txtMain.OnTextChanged();
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+        }
+
+        private void SetAutoSintax(string fileExtension)
+        {
+            switch (fileExtension.ToLower())
+            {
+                case ".txt":
+                    txtMain.Language = Language.Custom;
+                    break;
+                case ".cs":
+                    txtMain.Language = Language.CSharp;
+                    txtMain.WordWrap = false;
+                    WrapToolStripMenuItem.Checked = false;
+                    break;
+                case ".html":
+                    txtMain.Language = Language.HTML;
+                    txtMain.WordWrap = false;
+                    WrapToolStripMenuItem.Checked = false;
+                    break;
+                case ".php":
+                    txtMain.Language = Language.PHP;
+                    txtMain.WordWrap = false;
+                    WrapToolStripMenuItem.Checked = false;
+                    break;
+                case ".vb":
+                    txtMain.Language = Language.VB;
+                    txtMain.WordWrap = false;
+                    WrapToolStripMenuItem.Checked = false;
+                    break;
+                case ".sql":
+                    txtMain.Language = Language.SQL;
+                    txtMain.WordWrap = false;
+                    WrapToolStripMenuItem.Checked = false;
+                    break;
+                default:
+                    txtMain.Language = Language.Custom;
+                    break;
+            }
+
+            txtMain.OnTextChanged();
         }
     }
 }

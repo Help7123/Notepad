@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             mnuMain = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
@@ -68,22 +69,30 @@
             feedbackToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator6 = new ToolStripSeparator();
             About_a_ProgramToolStripMenuItem = new ToolStripMenuItem();
-            txtMain = new TextBox();
+            синтаксисыToolStripMenuItem = new ToolStripMenuItem();
+            Defaul_textToolStripMenuItem = new ToolStripMenuItem();
+            C_SharpToolStripMenuItem = new ToolStripMenuItem();
+            hTMLToolStripMenuItem = new ToolStripMenuItem();
+            pHPToolStripMenuItem = new ToolStripMenuItem();
+            vBToolStripMenuItem = new ToolStripMenuItem();
+            sQLToolStripMenuItem = new ToolStripMenuItem();
             stsMain = new StatusStrip();
             txt_infoStripStatusLabel1 = new ToolStripStatusLabel();
             sfdMain = new SaveFileDialog();
             ofdMain = new OpenFileDialog();
             prdMain = new PrintDialog();
+            txtMain = new FastColoredTextBoxNS.FastColoredTextBox();
             mnuMain.SuspendLayout();
             stsMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtMain).BeginInit();
             SuspendLayout();
             // 
             // mnuMain
             // 
-            mnuMain.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, форматToolStripMenuItem, видToolStripMenuItem, справкаToolStripMenuItem });
+            mnuMain.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, форматToolStripMenuItem, видToolStripMenuItem, справкаToolStripMenuItem, синтаксисыToolStripMenuItem });
             mnuMain.Location = new Point(0, 0);
             mnuMain.Name = "mnuMain";
-            mnuMain.Size = new Size(807, 24);
+            mnuMain.Size = new Size(752, 24);
             mnuMain.TabIndex = 0;
             mnuMain.Text = "menuStrip1";
             // 
@@ -293,7 +302,7 @@
             // 
             маштабToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { increase_the_ScaleToolStripMenuItem, reduce_the_ScaleToolStripMenuItem, Scale_defaultToolStripMenuItem });
             маштабToolStripMenuItem.Name = "маштабToolStripMenuItem";
-            маштабToolStripMenuItem.Size = new Size(180, 22);
+            маштабToolStripMenuItem.Size = new Size(173, 22);
             маштабToolStripMenuItem.Text = "маштаб";
             // 
             // increase_the_ScaleToolStripMenuItem
@@ -325,7 +334,7 @@
             Status_BarToolStripMenuItem.Checked = true;
             Status_BarToolStripMenuItem.CheckState = CheckState.Checked;
             Status_BarToolStripMenuItem.Name = "Status_BarToolStripMenuItem";
-            Status_BarToolStripMenuItem.Size = new Size(180, 22);
+            Status_BarToolStripMenuItem.Size = new Size(173, 22);
             Status_BarToolStripMenuItem.Text = "Строка состояния";
             Status_BarToolStripMenuItem.Click += Status_BarToolStripMenuItem_Click;
             // 
@@ -359,26 +368,61 @@
             About_a_ProgramToolStripMenuItem.Size = new Size(195, 22);
             About_a_ProgramToolStripMenuItem.Text = "О программе";
             // 
-            // txtMain
+            // синтаксисыToolStripMenuItem
             // 
-            txtMain.BorderStyle = BorderStyle.None;
-            txtMain.Dock = DockStyle.Fill;
-            txtMain.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMain.Location = new Point(0, 24);
-            txtMain.Multiline = true;
-            txtMain.Name = "txtMain";
-            txtMain.ScrollBars = ScrollBars.Both;
-            txtMain.Size = new Size(807, 408);
-            txtMain.TabIndex = 1;
-            txtMain.WordWrap = false;
-            txtMain.TextChanged += txtMain_TextChanged;
+            синтаксисыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Defaul_textToolStripMenuItem, C_SharpToolStripMenuItem, hTMLToolStripMenuItem, pHPToolStripMenuItem, vBToolStripMenuItem, sQLToolStripMenuItem });
+            синтаксисыToolStripMenuItem.Name = "синтаксисыToolStripMenuItem";
+            синтаксисыToolStripMenuItem.Size = new Size(86, 20);
+            синтаксисыToolStripMenuItem.Text = "Синтаксисы";
+            // 
+            // Defaul_textToolStripMenuItem
+            // 
+            Defaul_textToolStripMenuItem.Name = "Defaul_textToolStripMenuItem";
+            Defaul_textToolStripMenuItem.Size = new Size(160, 22);
+            Defaul_textToolStripMenuItem.Text = "Обычный текст";
+            Defaul_textToolStripMenuItem.Click += Defaul_textToolStripMenuItem_Click;
+            // 
+            // C_SharpToolStripMenuItem
+            // 
+            C_SharpToolStripMenuItem.Name = "C_SharpToolStripMenuItem";
+            C_SharpToolStripMenuItem.Size = new Size(160, 22);
+            C_SharpToolStripMenuItem.Text = "C#";
+            C_SharpToolStripMenuItem.Click += C_SharpToolStripMenuItem_Click;
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            hTMLToolStripMenuItem.Size = new Size(160, 22);
+            hTMLToolStripMenuItem.Text = "HTML";
+            hTMLToolStripMenuItem.Click += hTMLToolStripMenuItem_Click;
+            // 
+            // pHPToolStripMenuItem
+            // 
+            pHPToolStripMenuItem.Name = "pHPToolStripMenuItem";
+            pHPToolStripMenuItem.Size = new Size(160, 22);
+            pHPToolStripMenuItem.Text = "PHP";
+            pHPToolStripMenuItem.Click += pHPToolStripMenuItem_Click;
+            // 
+            // vBToolStripMenuItem
+            // 
+            vBToolStripMenuItem.Name = "vBToolStripMenuItem";
+            vBToolStripMenuItem.Size = new Size(160, 22);
+            vBToolStripMenuItem.Text = "VB";
+            vBToolStripMenuItem.Click += vBToolStripMenuItem_Click;
+            // 
+            // sQLToolStripMenuItem
+            // 
+            sQLToolStripMenuItem.Name = "sQLToolStripMenuItem";
+            sQLToolStripMenuItem.Size = new Size(160, 22);
+            sQLToolStripMenuItem.Text = "SQL";
+            sQLToolStripMenuItem.Click += sQLToolStripMenuItem_Click;
             // 
             // stsMain
             // 
             stsMain.Items.AddRange(new ToolStripItem[] { txt_infoStripStatusLabel1 });
-            stsMain.Location = new Point(0, 410);
+            stsMain.Location = new Point(0, 347);
             stsMain.Name = "stsMain";
-            stsMain.Size = new Size(807, 22);
+            stsMain.Size = new Size(752, 22);
             stsMain.TabIndex = 2;
             stsMain.Text = "statusStrip1";
             // 
@@ -386,12 +430,11 @@
             // 
             txt_infoStripStatusLabel1.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_infoStripStatusLabel1.Name = "txt_infoStripStatusLabel1";
-            txt_infoStripStatusLabel1.Size = new Size(213, 17);
-            txt_infoStripStatusLabel1.Text = "строка и столбик, маштаб, кодировка";
+            txt_infoStripStatusLabel1.Size = new Size(0, 17);
             // 
             // sfdMain
             // 
-            sfdMain.Filter = "Текстовый файл (.txt)|*.txt";
+            sfdMain.Filter = "Текстовый файл (.txt)|*.txt|Файлы C# (.cs)|*.cs|HTML-файлы (.html)|*.html|Файлы PHP (.php)|*.php|Файлы VB (.vb)|*.vb|Файлы SQL (.sql)|*.sql";
             // 
             // ofdMain
             // 
@@ -401,13 +444,46 @@
             // 
             prdMain.UseEXDialog = true;
             // 
+            // txtMain
+            // 
+            txtMain.AutoCompleteBracketsList = new char[]
+    {
+    '(',
+    ')',
+    '{',
+    '}',
+    '[',
+    ']',
+    '"',
+    '"',
+    '\'',
+    '\''
+    };
+            txtMain.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*(?<range>:)\\s*(?<range>[^;]+);";
+            txtMain.AutoScrollMinSize = new Size(27, 14);
+            txtMain.BackBrush = null;
+            txtMain.CharHeight = 14;
+            txtMain.CharWidth = 8;
+            txtMain.DisabledColor = Color.FromArgb(100, 180, 180, 180);
+            txtMain.Dock = DockStyle.Fill;
+            txtMain.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMain.IsReplaceMode = false;
+            txtMain.Location = new Point(0, 24);
+            txtMain.Name = "txtMain";
+            txtMain.Paddings = new Padding(0);
+            txtMain.SelectionColor = Color.FromArgb(60, 0, 0, 255);
+            txtMain.ServiceColors = (FastColoredTextBoxNS.ServiceColors)resources.GetObject("txtMain.ServiceColors");
+            txtMain.Size = new Size(752, 323);
+            txtMain.TabIndex = 3;
+            txtMain.Zoom = 100;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 432);
-            Controls.Add(stsMain);
+            ClientSize = new Size(752, 369);
             Controls.Add(txtMain);
+            Controls.Add(stsMain);
             Controls.Add(mnuMain);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnuMain;
@@ -417,6 +493,7 @@
             mnuMain.PerformLayout();
             stsMain.ResumeLayout(false);
             stsMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtMain).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -424,7 +501,6 @@
         #endregion
 
         private MenuStrip mnuMain;
-        private TextBox txtMain;
         private StatusStrip stsMain;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem tsmCreate;
@@ -468,5 +544,13 @@
         private ToolStripMenuItem Scale_defaultToolStripMenuItem;
         private ToolStripMenuItem Status_BarToolStripMenuItem;
         private ToolStripStatusLabel txt_infoStripStatusLabel1;
+        private FastColoredTextBoxNS.FastColoredTextBox txtMain;
+        private ToolStripMenuItem синтаксисыToolStripMenuItem;
+        private ToolStripMenuItem Defaul_textToolStripMenuItem;
+        private ToolStripMenuItem C_SharpToolStripMenuItem;
+        private ToolStripMenuItem hTMLToolStripMenuItem;
+        private ToolStripMenuItem pHPToolStripMenuItem;
+        private ToolStripMenuItem vBToolStripMenuItem;
+        private ToolStripMenuItem sQLToolStripMenuItem;
     }
 }

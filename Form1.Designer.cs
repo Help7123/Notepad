@@ -64,11 +64,6 @@
             reduce_the_ScaleToolStripMenuItem = new ToolStripMenuItem();
             Scale_defaultToolStripMenuItem = new ToolStripMenuItem();
             Status_BarToolStripMenuItem = new ToolStripMenuItem();
-            справкаToolStripMenuItem = new ToolStripMenuItem();
-            ViewTheHelpToolStripMenuItem = new ToolStripMenuItem();
-            feedbackToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator6 = new ToolStripSeparator();
-            About_a_ProgramToolStripMenuItem = new ToolStripMenuItem();
             синтаксисыToolStripMenuItem = new ToolStripMenuItem();
             Defaul_textToolStripMenuItem = new ToolStripMenuItem();
             C_SharpToolStripMenuItem = new ToolStripMenuItem();
@@ -76,6 +71,17 @@
             pHPToolStripMenuItem = new ToolStripMenuItem();
             vBToolStripMenuItem = new ToolStripMenuItem();
             sQLToolStripMenuItem = new ToolStripMenuItem();
+            кодировкаToolStripMenuItem = new ToolStripMenuItem();
+            uTF8ToolStripMenuItem = new ToolStripMenuItem();
+            uTF16ToolStripMenuItem = new ToolStripMenuItem();
+            ASCIIToolStripMenuItem = new ToolStripMenuItem();
+            uTF7ToolStripMenuItem = new ToolStripMenuItem();
+            uTF32ToolStripMenuItem = new ToolStripMenuItem();
+            справкаToolStripMenuItem = new ToolStripMenuItem();
+            ViewTheHelpToolStripMenuItem = new ToolStripMenuItem();
+            feedbackToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator6 = new ToolStripSeparator();
+            About_a_ProgramToolStripMenuItem = new ToolStripMenuItem();
             stsMain = new StatusStrip();
             txt_infoStripStatusLabel1 = new ToolStripStatusLabel();
             sfdMain = new SaveFileDialog();
@@ -89,7 +95,7 @@
             // 
             // mnuMain
             // 
-            mnuMain.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, форматToolStripMenuItem, видToolStripMenuItem, справкаToolStripMenuItem, синтаксисыToolStripMenuItem });
+            mnuMain.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, форматToolStripMenuItem, видToolStripMenuItem, синтаксисыToolStripMenuItem, кодировкаToolStripMenuItem, справкаToolStripMenuItem });
             mnuMain.Location = new Point(0, 0);
             mnuMain.Name = "mnuMain";
             mnuMain.Size = new Size(752, 24);
@@ -338,36 +344,6 @@
             Status_BarToolStripMenuItem.Text = "Строка состояния";
             Status_BarToolStripMenuItem.Click += Status_BarToolStripMenuItem_Click;
             // 
-            // справкаToolStripMenuItem
-            // 
-            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ViewTheHelpToolStripMenuItem, feedbackToolStripMenuItem, toolStripSeparator6, About_a_ProgramToolStripMenuItem });
-            справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            справкаToolStripMenuItem.Size = new Size(65, 20);
-            справкаToolStripMenuItem.Text = "Справка";
-            // 
-            // ViewTheHelpToolStripMenuItem
-            // 
-            ViewTheHelpToolStripMenuItem.Name = "ViewTheHelpToolStripMenuItem";
-            ViewTheHelpToolStripMenuItem.Size = new Size(195, 22);
-            ViewTheHelpToolStripMenuItem.Text = "Просмотреть справку";
-            // 
-            // feedbackToolStripMenuItem
-            // 
-            feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
-            feedbackToolStripMenuItem.Size = new Size(195, 22);
-            feedbackToolStripMenuItem.Text = "Оставить отзыв";
-            // 
-            // toolStripSeparator6
-            // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(192, 6);
-            // 
-            // About_a_ProgramToolStripMenuItem
-            // 
-            About_a_ProgramToolStripMenuItem.Name = "About_a_ProgramToolStripMenuItem";
-            About_a_ProgramToolStripMenuItem.Size = new Size(195, 22);
-            About_a_ProgramToolStripMenuItem.Text = "О программе";
-            // 
             // синтаксисыToolStripMenuItem
             // 
             синтаксисыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Defaul_textToolStripMenuItem, C_SharpToolStripMenuItem, hTMLToolStripMenuItem, pHPToolStripMenuItem, vBToolStripMenuItem, sQLToolStripMenuItem });
@@ -416,6 +392,80 @@
             sQLToolStripMenuItem.Size = new Size(160, 22);
             sQLToolStripMenuItem.Text = "SQL";
             sQLToolStripMenuItem.Click += sQLToolStripMenuItem_Click;
+            // 
+            // кодировкаToolStripMenuItem
+            // 
+            кодировкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { uTF8ToolStripMenuItem, uTF16ToolStripMenuItem, ASCIIToolStripMenuItem, uTF7ToolStripMenuItem, uTF32ToolStripMenuItem });
+            кодировкаToolStripMenuItem.Name = "кодировкаToolStripMenuItem";
+            кодировкаToolStripMenuItem.Size = new Size(78, 20);
+            кодировкаToolStripMenuItem.Text = "Кодировка";
+            // 
+            // uTF8ToolStripMenuItem
+            // 
+            uTF8ToolStripMenuItem.Checked = true;
+            uTF8ToolStripMenuItem.CheckState = CheckState.Checked;
+            uTF8ToolStripMenuItem.Name = "uTF8ToolStripMenuItem";
+            uTF8ToolStripMenuItem.Size = new Size(180, 22);
+            uTF8ToolStripMenuItem.Text = "UTF-8";
+            uTF8ToolStripMenuItem.Click += uTF8ToolStripMenuItem_Click;
+            // 
+            // uTF16ToolStripMenuItem
+            // 
+            uTF16ToolStripMenuItem.Name = "uTF16ToolStripMenuItem";
+            uTF16ToolStripMenuItem.Size = new Size(180, 22);
+            uTF16ToolStripMenuItem.Text = "UTF-16";
+            uTF16ToolStripMenuItem.Click += uTF16ToolStripMenuItem_Click;
+            // 
+            // ASCIIToolStripMenuItem
+            // 
+            ASCIIToolStripMenuItem.Name = "ASCIIToolStripMenuItem";
+            ASCIIToolStripMenuItem.Size = new Size(180, 22);
+            ASCIIToolStripMenuItem.Text = "ASCII";
+            ASCIIToolStripMenuItem.Click += ASCIIToolStripMenuItem_Click;
+            // 
+            // uTF7ToolStripMenuItem
+            // 
+            uTF7ToolStripMenuItem.Name = "uTF7ToolStripMenuItem";
+            uTF7ToolStripMenuItem.Size = new Size(180, 22);
+            uTF7ToolStripMenuItem.Text = "UTF-7";
+            uTF7ToolStripMenuItem.Click += uTF7ToolStripMenuItem_Click;
+            // 
+            // uTF32ToolStripMenuItem
+            // 
+            uTF32ToolStripMenuItem.Name = "uTF32ToolStripMenuItem";
+            uTF32ToolStripMenuItem.Size = new Size(180, 22);
+            uTF32ToolStripMenuItem.Text = "UTF-32";
+            uTF32ToolStripMenuItem.Click += uTF32ToolStripMenuItem_Click;
+            // 
+            // справкаToolStripMenuItem
+            // 
+            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ViewTheHelpToolStripMenuItem, feedbackToolStripMenuItem, toolStripSeparator6, About_a_ProgramToolStripMenuItem });
+            справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            справкаToolStripMenuItem.Size = new Size(65, 20);
+            справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // ViewTheHelpToolStripMenuItem
+            // 
+            ViewTheHelpToolStripMenuItem.Name = "ViewTheHelpToolStripMenuItem";
+            ViewTheHelpToolStripMenuItem.Size = new Size(195, 22);
+            ViewTheHelpToolStripMenuItem.Text = "Просмотреть справку";
+            // 
+            // feedbackToolStripMenuItem
+            // 
+            feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
+            feedbackToolStripMenuItem.Size = new Size(195, 22);
+            feedbackToolStripMenuItem.Text = "Оставить отзыв";
+            // 
+            // toolStripSeparator6
+            // 
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(192, 6);
+            // 
+            // About_a_ProgramToolStripMenuItem
+            // 
+            About_a_ProgramToolStripMenuItem.Name = "About_a_ProgramToolStripMenuItem";
+            About_a_ProgramToolStripMenuItem.Size = new Size(195, 22);
+            About_a_ProgramToolStripMenuItem.Text = "О программе";
             // 
             // stsMain
             // 
@@ -476,6 +526,7 @@
             txtMain.Size = new Size(752, 323);
             txtMain.TabIndex = 3;
             txtMain.Zoom = 100;
+            txtMain.TextChanged += txtMain_TextChanged;
             // 
             // frmMain
             // 
@@ -552,5 +603,11 @@
         private ToolStripMenuItem pHPToolStripMenuItem;
         private ToolStripMenuItem vBToolStripMenuItem;
         private ToolStripMenuItem sQLToolStripMenuItem;
+        private ToolStripMenuItem кодировкаToolStripMenuItem;
+        private ToolStripMenuItem uTF8ToolStripMenuItem;
+        private ToolStripMenuItem uTF16ToolStripMenuItem;
+        private ToolStripMenuItem ASCIIToolStripMenuItem;
+        private ToolStripMenuItem uTF7ToolStripMenuItem;
+        private ToolStripMenuItem uTF32ToolStripMenuItem;
     }
 }

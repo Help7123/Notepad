@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using System.Drawing.Printing;
 using System.IO;
+using System.Text;
+using System.Text.Unicode;
 using FastColoredTextBoxNS;
 using TabStrip;
 using static System.Net.Mime.MediaTypeNames;
@@ -9,12 +11,14 @@ namespace Notepad
 {
     public partial class frmMain : Form
     {
+
+        private Encoding encode = Encoding.Default;
+
         public frmMain()
         {
             InitializeComponent();
-            txt_infoStripStatusLabel1.Text = @$"    Маштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}";
+            txt_infoStripStatusLabel1.Text = @$"    Масштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}";
         }
-
         /// <summary>
         /// Сохраненные параметры страницы
         /// </summary>
@@ -35,12 +39,14 @@ namespace Notepad
                     StreamReader fr = new(ofdMain.FileName);
                     str = fr.ReadLine();
                     txtMain.Text = str + "\r\n";
+                    encode = fr.CurrentEncoding;
+                    SetAutoEncode();
                     while (str != null)
                     {
                         str = fr.ReadLine();
                         txtMain.Text = txtMain.Text + str + "\r\n"; ;
                     }
-                    string ext =Path.GetExtension(ofdMain.FileName);
+                    string ext = Path.GetExtension(ofdMain.FileName);
                     SetAutoSintax(ext);
                     fr.Close();
                 }
@@ -52,6 +58,8 @@ namespace Notepad
         }
 
 
+
+
         /// <summary>
         /// Сохранить как...
         /// Функция вызывает окно, сохранения файла как, где можно выбрать путь, где будет сохранен файл и его название
@@ -60,7 +68,7 @@ namespace Notepad
         {
             if (sfdMain.ShowDialog() == DialogResult.OK)
             {
-                Save(sfdMain.FileName);
+                Save(sfdMain.FileName, encode);
             }
         }
 
@@ -72,15 +80,16 @@ namespace Notepad
         {
             if (ofdMain.FileName != null)
             {
-                Save(ofdMain.FileName);
+                Save(ofdMain.FileName, encode);
             }
         }
-        private void Save(string FileName)
+        private void Save(string FileName, Encoding encoding)
         {
             try
             {
+                if (encoding == null) encoding = Encoding.UTF8;
                 string read_str = txtMain.Text;
-                StreamWriter writer = new(FileName);
+                StreamWriter writer = new(FileName, false, encoding);
                 writer.WriteLine(read_str);
                 writer.Close();
             }
@@ -142,7 +151,7 @@ namespace Notepad
             {
                 if (sfdMain.ShowDialog() == DialogResult.OK)
                 {
-                    Save(sfdMain.FileName);
+                    Save(sfdMain.FileName, encode);
                 }
             }
             else if (result == DialogResult.No)
@@ -195,7 +204,7 @@ namespace Notepad
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
             UndoToolStripMenuItem.Enabled = true;
-            txt_infoStripStatusLabel1.Text = @$"    Маштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}";
+            txt_infoStripStatusLabel1.Text = @$"    Масштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}   |   Кодировка:{encode.HeaderName}";
         }
 
 
@@ -435,5 +444,73 @@ namespace Notepad
 
             txtMain.OnTextChanged();
         }
+
+        private void SetEncoding(Encoding encoding)
+        {
+            encode = encoding;
+            UpdateStatusStrip();
+        }
+
+        private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF8);
+        }
+
+        private void uTF16ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.Unicode);
+        }
+
+        private void ASCIIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.ASCII);
+        }
+
+        private void uTF32ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF32);
+        }
+
+        private void uTF7ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF7);
+        }
+
+        private void UpdateStatusStrip()
+        {
+            uTF8ToolStripMenuItem.Checked = (encode == Encoding.UTF8);
+            uTF16ToolStripMenuItem.Checked = (encode == Encoding.Unicode);
+            ASCIIToolStripMenuItem.Checked = (encode == Encoding.ASCII);
+            uTF32ToolStripMenuItem.Checked = (encode == Encoding.UTF32);
+            uTF7ToolStripMenuItem.Checked = (encode == Encoding.UTF7);
+            txt_infoStripStatusLabel1.Text = @$"    Масштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}   |   Кодировка:{encode.HeaderName}";
+        }
+
+        private void SetAutoEncode()
+        {
+            switch (encode.HeaderName.ToLower())
+            {
+                case nameof(Encoding.UTF8):
+                    SetEncoding(Encoding.UTF8);
+                    break;
+                case nameof(Encoding.Unicode):
+                    SetEncoding(Encoding.Unicode);
+                    break;
+                case nameof(Encoding.ASCII):
+                    SetEncoding(Encoding.ASCII);
+                    break;
+                case nameof(Encoding.UTF32):
+                    SetEncoding(Encoding.UTF32);
+                    break;
+                case nameof(Encoding.UTF7):
+                    SetEncoding(Encoding.UTF7);
+                    break;
+                default:
+                    SetEncoding(Encoding.UTF8);
+                    break;
+            }
+        }
+
+        
     }
 }

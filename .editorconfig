@@ -2,3 +2,6 @@
 
 # CS8602: Разыменование вероятной пустой ссылки.
 dotnet_diagnostic.CS8602.severity = none
+
+# SYSLIB0001: Тип или член устарел
+dotnet_diagnostic.SYSLIB0001.severity = none

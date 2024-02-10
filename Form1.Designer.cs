@@ -84,13 +84,19 @@
             About_a_ProgramToolStripMenuItem = new ToolStripMenuItem();
             stsMain = new StatusStrip();
             txt_infoStripStatusLabel1 = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             sfdMain = new SaveFileDialog();
             ofdMain = new OpenFileDialog();
             prdMain = new PrintDialog();
+            tabPage1 = new TabPage();
             txtMain = new FastColoredTextBoxNS.FastColoredTextBox();
+            tabControl = new TabControl();
+            Close_fileToolStripMenuItem = new ToolStripMenuItem();
             mnuMain.SuspendLayout();
             stsMain.SuspendLayout();
+            tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtMain).BeginInit();
+            tabControl.SuspendLayout();
             SuspendLayout();
             // 
             // mnuMain
@@ -98,13 +104,13 @@
             mnuMain.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, правкаToolStripMenuItem, форматToolStripMenuItem, видToolStripMenuItem, синтаксисыToolStripMenuItem, кодировкаToolStripMenuItem, справкаToolStripMenuItem });
             mnuMain.Location = new Point(0, 0);
             mnuMain.Name = "mnuMain";
-            mnuMain.Size = new Size(752, 24);
+            mnuMain.Size = new Size(690, 24);
             mnuMain.TabIndex = 0;
             mnuMain.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmCreate, tsmNewWindow, tsmOpen, tsmSave, SaveAsToolStripMenuItem, toolStripSeparator2, PagerSettingsToolStripMenuItem, print, toolStripSeparator1, tsmExit });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmCreate, tsmNewWindow, tsmOpen, tsmSave, SaveAsToolStripMenuItem, Close_fileToolStripMenuItem, toolStripSeparator2, PagerSettingsToolStripMenuItem, print, toolStripSeparator1, tsmExit });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(48, 20);
             файлToolStripMenuItem.Text = "Файл";
@@ -308,7 +314,7 @@
             // 
             маштабToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { increase_the_ScaleToolStripMenuItem, reduce_the_ScaleToolStripMenuItem, Scale_defaultToolStripMenuItem });
             маштабToolStripMenuItem.Name = "маштабToolStripMenuItem";
-            маштабToolStripMenuItem.Size = new Size(180, 22);
+            маштабToolStripMenuItem.Size = new Size(173, 22);
             маштабToolStripMenuItem.Text = "масштаб";
             // 
             // increase_the_ScaleToolStripMenuItem
@@ -340,7 +346,7 @@
             Status_BarToolStripMenuItem.Checked = true;
             Status_BarToolStripMenuItem.CheckState = CheckState.Checked;
             Status_BarToolStripMenuItem.Name = "Status_BarToolStripMenuItem";
-            Status_BarToolStripMenuItem.Size = new Size(180, 22);
+            Status_BarToolStripMenuItem.Size = new Size(173, 22);
             Status_BarToolStripMenuItem.Text = "Строка состояния";
             Status_BarToolStripMenuItem.Click += Status_BarToolStripMenuItem_Click;
             // 
@@ -469,10 +475,11 @@
             // 
             // stsMain
             // 
-            stsMain.Items.AddRange(new ToolStripItem[] { txt_infoStripStatusLabel1 });
-            stsMain.Location = new Point(0, 347);
+            stsMain.ImeMode = ImeMode.NoControl;
+            stsMain.Items.AddRange(new ToolStripItem[] { txt_infoStripStatusLabel1, toolStripStatusLabel1 });
+            stsMain.Location = new Point(0, 447);
             stsMain.Name = "stsMain";
-            stsMain.Size = new Size(752, 22);
+            stsMain.Size = new Size(690, 22);
             stsMain.TabIndex = 2;
             stsMain.Text = "statusStrip1";
             // 
@@ -481,6 +488,11 @@
             txt_infoStripStatusLabel1.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_infoStripStatusLabel1.Name = "txt_infoStripStatusLabel1";
             txt_infoStripStatusLabel1.Size = new Size(0, 17);
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(0, 17);
             // 
             // sfdMain
             // 
@@ -493,6 +505,17 @@
             // prdMain
             // 
             prdMain.UseEXDialog = true;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(txtMain);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(682, 395);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtMain
             // 
@@ -518,22 +541,41 @@
             txtMain.Dock = DockStyle.Fill;
             txtMain.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtMain.IsReplaceMode = false;
-            txtMain.Location = new Point(0, 24);
+            txtMain.Location = new Point(3, 3);
             txtMain.Name = "txtMain";
             txtMain.Paddings = new Padding(0);
             txtMain.SelectionColor = Color.FromArgb(60, 0, 0, 255);
             txtMain.ServiceColors = (FastColoredTextBoxNS.ServiceColors)resources.GetObject("txtMain.ServiceColors");
-            txtMain.Size = new Size(752, 323);
+            txtMain.Size = new Size(676, 389);
             txtMain.TabIndex = 3;
             txtMain.Zoom = 100;
             txtMain.TextChanged += txtMain_TextChanged;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(tabPage1);
+            tabControl.Dock = DockStyle.Fill;
+            tabControl.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            tabControl.Location = new Point(0, 24);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(690, 423);
+            tabControl.TabIndex = 4;
+            tabControl.Click += txtMain_TextChanged;
+            // 
+            // Close_fileToolStripMenuItem
+            // 
+            Close_fileToolStripMenuItem.Name = "Close_fileToolStripMenuItem";
+            Close_fileToolStripMenuItem.Size = new Size(241, 22);
+            Close_fileToolStripMenuItem.Text = "Закрыть файл";
+            Close_fileToolStripMenuItem.Click += Close_fileToolStripMenuItem_Click;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(752, 369);
-            Controls.Add(txtMain);
+            ClientSize = new Size(690, 469);
+            Controls.Add(tabControl);
             Controls.Add(stsMain);
             Controls.Add(mnuMain);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -544,7 +586,9 @@
             mnuMain.PerformLayout();
             stsMain.ResumeLayout(false);
             stsMain.PerformLayout();
+            tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)txtMain).EndInit();
+            tabControl.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -595,7 +639,6 @@
         private ToolStripMenuItem Scale_defaultToolStripMenuItem;
         private ToolStripMenuItem Status_BarToolStripMenuItem;
         private ToolStripStatusLabel txt_infoStripStatusLabel1;
-        private FastColoredTextBoxNS.FastColoredTextBox txtMain;
         private ToolStripMenuItem синтаксисыToolStripMenuItem;
         private ToolStripMenuItem Defaul_textToolStripMenuItem;
         private ToolStripMenuItem C_SharpToolStripMenuItem;
@@ -609,5 +652,10 @@
         private ToolStripMenuItem ASCIIToolStripMenuItem;
         private ToolStripMenuItem uTF7ToolStripMenuItem;
         private ToolStripMenuItem uTF32ToolStripMenuItem;
+        private TabPage tabPage1;
+        private FastColoredTextBoxNS.FastColoredTextBox txtMain;
+        private TabControl tabControl;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripMenuItem Close_fileToolStripMenuItem;
     }
 }

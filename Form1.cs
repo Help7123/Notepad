@@ -11,7 +11,9 @@ namespace Notepad
 {
     public partial class frmMain : Form
     {
-
+        /// <summary>
+        /// Сохраненная кодировка
+        /// </summary>
         private Encoding encode = Encoding.Default;
 
         public frmMain()
@@ -47,7 +49,7 @@ namespace Notepad
                         txtMain.Text = txtMain.Text + str + "\r\n"; ;
                     }
                     string ext = Path.GetExtension(ofdMain.FileName);
-                    SetAutoSintax(ext);
+                    SetAutoSyntax(ext);
                     fr.Close();
                 }
                 catch (Exception b)
@@ -199,7 +201,7 @@ namespace Notepad
 
         /// <summary>
         /// При изменение txtMain включает кнопку Отменить
-        /// Строка состояния в разработке...
+        /// Строка состояния показывает информацию об окне
         /// </summary>
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
@@ -302,6 +304,10 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        /// Перенос по словам
+        /// Включает перенос слов, если они не влазят в окно программы
+        /// </summary>
         private void WrapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (txtMain.WordWrap == true)
@@ -317,22 +323,38 @@ namespace Notepad
 
         }
 
+        /// <summary>
+        /// Восстановить масштаб по умолчанию
+        /// Устанавливает масштаб на 100%
+        /// </summary>
         private void Scale_defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtMain.Zoom = 100;
         }
 
+        /// <summary>
+        /// Уменьшить
+        /// Уменьшаем масштаб на 10%
+        /// </summary>
         private void reduce_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtMain.Zoom -= 10;
         }
 
+        /// <summary>
+        /// Увеличить
+        /// Увеличивает масштаб на 10%
+        /// </summary>
         private void increase_the_ScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtMain.Zoom += 10;
 
         }
 
+        /// <summary>
+        /// Строка состояния
+        /// Включает/Отключает отображение строки состояния
+        /// </summary>
         private void Status_BarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (stsMain.Visible == true)
@@ -347,137 +369,113 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        /// Вспомогательная функция для установки синтаксиса TextBox и установление
+        /// параметра Checked у нужного пункта в меню Синтаксис
+        /// </summary>
+        private void SetLanguage(Language language)
+        {
+            txtMain.Language = language;
+            txtMain.WordWrap = false;
+            WrapToolStripMenuItem.Checked = false;
+            C_SharpToolStripMenuItem.Checked = (txtMain.Language == Language.CSharp);
+            hTMLToolStripMenuItem.Checked = (txtMain.Language == Language.HTML);
+            pHPToolStripMenuItem.Checked = (txtMain.Language == Language.PHP);
+            vBToolStripMenuItem.Checked = (txtMain.Language == Language.VB);
+            sQLToolStripMenuItem.Checked = (txtMain.Language == Language.SQL);
+            Defaul_textToolStripMenuItem.Checked = (txtMain.Language == Language.Custom);
+            txtMain.OnTextChanged();   
+        }
+
+        /// <summary>
+        /// Обычный текст
+        /// Устанавливает Синтаксис на Обычный текст
+        /// </summary>
         private void Defaul_textToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.Custom;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
+            SetLanguage(Language.Custom);
         }
 
+        /// <summary>
+        /// C#
+        /// Устанавливает Синтаксис на C#
+        /// </summary>
         private void C_SharpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.CSharp;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
-            txtMain.WordWrap = false;
-            WrapToolStripMenuItem.Checked = false;
+            SetLanguage(Language.CSharp);
         }
 
+        /// <summary>
+        /// HTML
+        /// Устанавливает Синтаксис на HTML
+        /// </summary>
         private void hTMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.HTML;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
-            txtMain.WordWrap = false;
-            WrapToolStripMenuItem.Checked = false;
+            SetLanguage(Language.HTML);
         }
 
+        /// <summary>
+        /// PHP
+        /// Устанавливает Синтаксис на PHP
+        /// </summary>
         private void pHPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.PHP;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
-            txtMain.WordWrap = false;
-            WrapToolStripMenuItem.Checked = false;
+            SetLanguage(Language.PHP);
         }
 
+        /// <summary>
+        /// VB
+        /// Устанавливает Синтаксис на VB
+        /// </summary>
         private void vBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.VB;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
-            txtMain.WordWrap = false;
-            WrapToolStripMenuItem.Checked = false;
+            SetLanguage(Language.VB);
         }
 
+        /// <summary>
+        /// SQL
+        /// Устанавливает Синтаксис на SQL
+        /// </summary>
         private void sQLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = txtMain.Text;
-            txtMain.Language = Language.SQL;
-            txtMain.Text = text;
-            txtMain.OnTextChanged();
-            txtMain.WordWrap = false;
-            WrapToolStripMenuItem.Checked = false;
+            SetLanguage(Language.SQL);
         }
 
-        private void SetAutoSintax(string fileExtension)
+        /// <summary>
+        /// Функция для автоматической установки синтаксиса по расширению файла
+        /// </summary>
+        private void SetAutoSyntax(string fileExtension)
         {
             switch (fileExtension.ToLower())
             {
-                case ".txt":
-                    txtMain.Language = Language.Custom;
-                    break;
                 case ".cs":
-                    txtMain.Language = Language.CSharp;
-                    txtMain.WordWrap = false;
-                    WrapToolStripMenuItem.Checked = false;
+                    SetLanguage(Language.CSharp);
                     break;
                 case ".html":
-                    txtMain.Language = Language.HTML;
-                    txtMain.WordWrap = false;
-                    WrapToolStripMenuItem.Checked = false;
+                    SetLanguage(Language.HTML);
                     break;
                 case ".php":
-                    txtMain.Language = Language.PHP;
-                    txtMain.WordWrap = false;
-                    WrapToolStripMenuItem.Checked = false;
+                    SetLanguage(Language.PHP);
                     break;
                 case ".vb":
-                    txtMain.Language = Language.VB;
-                    txtMain.WordWrap = false;
-                    WrapToolStripMenuItem.Checked = false;
+                    SetLanguage(Language.VB);
                     break;
                 case ".sql":
-                    txtMain.Language = Language.SQL;
-                    txtMain.WordWrap = false;
-                    WrapToolStripMenuItem.Checked = false;
+                    SetLanguage(Language.SQL);
                     break;
                 default:
-                    txtMain.Language = Language.Custom;
+                    SetLanguage(Language.Custom);
                     break;
             }
-
-            txtMain.OnTextChanged();
         }
 
+        /// <summary>
+        /// Вспомогательная функция для установки кодировки TextBox и установление
+        /// параметра Checked у нужного пункта в меню Кодировка
+        /// </summary>
         private void SetEncoding(Encoding encoding)
         {
             encode = encoding;
-            UpdateStatusStrip();
-        }
-
-        private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetEncoding(Encoding.UTF8);
-        }
-
-        private void uTF16ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetEncoding(Encoding.Unicode);
-        }
-
-        private void ASCIIToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetEncoding(Encoding.ASCII);
-        }
-
-        private void uTF32ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetEncoding(Encoding.UTF32);
-        }
-
-        private void uTF7ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetEncoding(Encoding.UTF7);
-        }
-
-        private void UpdateStatusStrip()
-        {
             uTF8ToolStripMenuItem.Checked = (encode == Encoding.UTF8);
             uTF16ToolStripMenuItem.Checked = (encode == Encoding.Unicode);
             ASCIIToolStripMenuItem.Checked = (encode == Encoding.ASCII);
@@ -486,6 +484,54 @@ namespace Notepad
             txt_infoStripStatusLabel1.Text = @$"    Масштаб:{txtMain.Zoom}   |   Синтаксис:{txtMain.Language}   |   Кодировка:{encode.HeaderName}";
         }
 
+        /// <summary>
+        /// UTF8
+        /// Устанавливает кодировку на UTF8
+        /// </summary>
+        private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// UTF16
+        /// Устанавливает кодировку на UTF-16
+        /// </summary>
+        private void uTF16ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.Unicode);
+        }
+
+        /// <summary>
+        /// ASCII
+        /// Устанавливает кодировку на ASCII
+        /// </summary>
+        private void ASCIIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.ASCII);
+        }
+
+        /// <summary>
+        /// UTF32
+        /// Устанавливает кодировку на UTF32
+        /// </summary>
+        private void uTF32ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF32);
+        }
+
+        /// <summary>
+        /// UTF7
+        /// Устанавливает кодировку на UTF7
+        /// </summary>
+        private void uTF7ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetEncoding(Encoding.UTF7);
+        }
+
+        /// <summary>
+        /// Функция для автоматической установки кодировки открытого файла
+        /// </summary>
         private void SetAutoEncode()
         {
             switch (encode.HeaderName.ToLower())

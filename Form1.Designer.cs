@@ -308,14 +308,14 @@
             // 
             маштабToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { increase_the_ScaleToolStripMenuItem, reduce_the_ScaleToolStripMenuItem, Scale_defaultToolStripMenuItem });
             маштабToolStripMenuItem.Name = "маштабToolStripMenuItem";
-            маштабToolStripMenuItem.Size = new Size(173, 22);
-            маштабToolStripMenuItem.Text = "маштаб";
+            маштабToolStripMenuItem.Size = new Size(180, 22);
+            маштабToolStripMenuItem.Text = "масштаб";
             // 
             // increase_the_ScaleToolStripMenuItem
             // 
             increase_the_ScaleToolStripMenuItem.Name = "increase_the_ScaleToolStripMenuItem";
             increase_the_ScaleToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Oemplus;
-            increase_the_ScaleToolStripMenuItem.Size = new Size(322, 22);
+            increase_the_ScaleToolStripMenuItem.Size = new Size(328, 22);
             increase_the_ScaleToolStripMenuItem.Text = "Увеличить";
             increase_the_ScaleToolStripMenuItem.Click += increase_the_ScaleToolStripMenuItem_Click;
             // 
@@ -323,7 +323,7 @@
             // 
             reduce_the_ScaleToolStripMenuItem.Name = "reduce_the_ScaleToolStripMenuItem";
             reduce_the_ScaleToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.OemMinus;
-            reduce_the_ScaleToolStripMenuItem.Size = new Size(322, 22);
+            reduce_the_ScaleToolStripMenuItem.Size = new Size(328, 22);
             reduce_the_ScaleToolStripMenuItem.Text = "Уменьшить";
             reduce_the_ScaleToolStripMenuItem.Click += reduce_the_ScaleToolStripMenuItem_Click;
             // 
@@ -331,8 +331,8 @@
             // 
             Scale_defaultToolStripMenuItem.Name = "Scale_defaultToolStripMenuItem";
             Scale_defaultToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D0;
-            Scale_defaultToolStripMenuItem.Size = new Size(322, 22);
-            Scale_defaultToolStripMenuItem.Text = "Восстановить маштаб по умолчанию";
+            Scale_defaultToolStripMenuItem.Size = new Size(328, 22);
+            Scale_defaultToolStripMenuItem.Text = "Восстановить масштаб по умолчанию";
             Scale_defaultToolStripMenuItem.Click += Scale_defaultToolStripMenuItem_Click;
             // 
             // Status_BarToolStripMenuItem
@@ -340,7 +340,7 @@
             Status_BarToolStripMenuItem.Checked = true;
             Status_BarToolStripMenuItem.CheckState = CheckState.Checked;
             Status_BarToolStripMenuItem.Name = "Status_BarToolStripMenuItem";
-            Status_BarToolStripMenuItem.Size = new Size(173, 22);
+            Status_BarToolStripMenuItem.Size = new Size(180, 22);
             Status_BarToolStripMenuItem.Text = "Строка состояния";
             Status_BarToolStripMenuItem.Click += Status_BarToolStripMenuItem_Click;
             // 
@@ -405,35 +405,35 @@
             uTF8ToolStripMenuItem.Checked = true;
             uTF8ToolStripMenuItem.CheckState = CheckState.Checked;
             uTF8ToolStripMenuItem.Name = "uTF8ToolStripMenuItem";
-            uTF8ToolStripMenuItem.Size = new Size(180, 22);
+            uTF8ToolStripMenuItem.Size = new Size(111, 22);
             uTF8ToolStripMenuItem.Text = "UTF-8";
             uTF8ToolStripMenuItem.Click += uTF8ToolStripMenuItem_Click;
             // 
             // uTF16ToolStripMenuItem
             // 
             uTF16ToolStripMenuItem.Name = "uTF16ToolStripMenuItem";
-            uTF16ToolStripMenuItem.Size = new Size(180, 22);
+            uTF16ToolStripMenuItem.Size = new Size(111, 22);
             uTF16ToolStripMenuItem.Text = "UTF-16";
             uTF16ToolStripMenuItem.Click += uTF16ToolStripMenuItem_Click;
             // 
             // ASCIIToolStripMenuItem
             // 
             ASCIIToolStripMenuItem.Name = "ASCIIToolStripMenuItem";
-            ASCIIToolStripMenuItem.Size = new Size(180, 22);
+            ASCIIToolStripMenuItem.Size = new Size(111, 22);
             ASCIIToolStripMenuItem.Text = "ASCII";
             ASCIIToolStripMenuItem.Click += ASCIIToolStripMenuItem_Click;
             // 
             // uTF7ToolStripMenuItem
             // 
             uTF7ToolStripMenuItem.Name = "uTF7ToolStripMenuItem";
-            uTF7ToolStripMenuItem.Size = new Size(180, 22);
+            uTF7ToolStripMenuItem.Size = new Size(111, 22);
             uTF7ToolStripMenuItem.Text = "UTF-7";
             uTF7ToolStripMenuItem.Click += uTF7ToolStripMenuItem_Click;
             // 
             // uTF32ToolStripMenuItem
             // 
             uTF32ToolStripMenuItem.Name = "uTF32ToolStripMenuItem";
-            uTF32ToolStripMenuItem.Size = new Size(180, 22);
+            uTF32ToolStripMenuItem.Size = new Size(111, 22);
             uTF32ToolStripMenuItem.Text = "UTF-32";
             uTF32ToolStripMenuItem.Click += uTF32ToolStripMenuItem_Click;
             // 
